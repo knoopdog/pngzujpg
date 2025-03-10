@@ -25,23 +25,19 @@ function initUpload() {
     uploadArea.addEventListener('drop', handleDrop);
     
     // Add event listener for file input
-    // Use a flag to prevent multiple clicks
-    let isFileInputActive = false;
+    // Use a debounce approach to prevent multiple clicks
+    let lastClickTime = 0;
     
     uploadArea.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
+        const currentTime = new Date().getTime();
         
-        // Prevent multiple clicks
-        if (isFileInputActive) return;
+        // Prevent rapid clicks (within 500ms)
+        if (currentTime - lastClickTime < 500) {
+            return;
+        }
         
-        isFileInputActive = true;
+        lastClickTime = currentTime;
         fileInput.click();
-        
-        // Reset flag after a short delay
-        setTimeout(() => {
-            isFileInputActive = false;
-        }, 1000);
     });
     
     fileInput.addEventListener('change', handleFileSelect);

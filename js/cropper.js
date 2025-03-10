@@ -33,6 +33,11 @@ function initCropper() {
         return;
     }
     
+    // Ensure all aspect ratio buttons are reset at initialization
+    if (aspectRatioButtons) {
+        aspectRatioButtons.forEach(btn => btn.classList.remove('active'));
+    }
+    
     // Ensure all buttons are properly selected
     const cropButtonCheck = document.getElementById('crop-button');
     const resetButtonCheck = document.getElementById('reset-button');
