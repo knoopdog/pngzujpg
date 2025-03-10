@@ -25,7 +25,25 @@ function initUpload() {
     uploadArea.addEventListener('drop', handleDrop);
     
     // Add event listener for file input
-    uploadArea.addEventListener('click', () => fileInput.click());
+    // Use a flag to prevent multiple clicks
+    let isFileInputActive = false;
+    
+    uploadArea.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Prevent multiple clicks
+        if (isFileInputActive) return;
+        
+        isFileInputActive = true;
+        fileInput.click();
+        
+        // Reset flag after a short delay
+        setTimeout(() => {
+            isFileInputActive = false;
+        }, 1000);
+    });
+    
     fileInput.addEventListener('change', handleFileSelect);
 }
 

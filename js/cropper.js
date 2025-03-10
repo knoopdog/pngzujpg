@@ -165,8 +165,7 @@ function initCropper() {
         }
     });
     
-    // Set the first button (free) as active by default
-    aspectRatioButtons[0].classList.add('active');
+    // No button should be active by default
 }
 
 /**
@@ -334,9 +333,8 @@ function resetCropper() {
     // Reset the cropper
     cropper.reset();
     
-    // Reset the aspect ratio buttons
+    // Reset the aspect ratio buttons - no button should be active
     aspectRatioButtons.forEach(btn => btn.classList.remove('active'));
-    aspectRatioButtons[0].classList.add('active');
     
     // Reset the aspect ratio
     currentRatio = NaN;
