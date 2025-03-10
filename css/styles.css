@@ -678,26 +678,67 @@ footer {
 
 /* Hero Section */
 .hero-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-}
-
-.hero-container {
+    position: relative;
+    height: 80vh;
+    min-height: 500px;
+    max-height: 800px;
+    overflow: hidden;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    text-align: center;
+    justify-content: center;
+    background-color: var(--background-color);
 }
 
 .hero-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.hero-fallback {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    color: var(--white);
+    padding: 0 20px;
     max-width: 800px;
-    margin-bottom: 40px;
+    margin: 0 auto;
 }
 
 .hero-title {
     font-size: 3rem;
     font-weight: 700;
-    color: var(--text-color);
     margin-bottom: 20px;
     line-height: 1.2;
 }
@@ -708,7 +749,6 @@ footer {
 
 .hero-description {
     font-size: 1.25rem;
-    color: var(--secondary-color);
     margin-bottom: 30px;
 }
 
@@ -729,18 +769,18 @@ footer {
     background-color: #3a5bd9;
 }
 
-.hero-image {
-    max-width: 100%;
-    margin-top: 40px;
-    border-radius: var(--border-radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-}
-
-.hero-image img {
-    display: block;
-    max-width: 100%;
-    height: auto;
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-description {
+        font-size: 1rem;
+    }
 }
 
 /* Benefits Section */
@@ -1100,4 +1140,25 @@ footer {
 
 .mt-40 {
     margin-top: 40px;
+}
+
+.hero-video {
+    width: 100%;
+    height: auto;
+    max-height: 70vh;
+    object-fit: cover;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+.feature-image img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+.feature-image img:hover {
+    transform: scale(1.02);
 }
