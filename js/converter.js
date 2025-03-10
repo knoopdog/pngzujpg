@@ -28,8 +28,11 @@ function initConverter() {
         qualityValue.textContent = this.value + '%';
     });
     
-    // Add event listener for new image button
-    newImageButton.addEventListener('click', resetApplication);
+    // Add event listener for new image button - reload the page instead of resetting the application
+    newImageButton.addEventListener('click', function() {
+        // Reload the current page
+        window.location.href = window.location.href.split('#')[0];
+    });
 }
 
 /**

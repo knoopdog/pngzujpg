@@ -24,21 +24,9 @@ function initUpload() {
     uploadArea.addEventListener('dragleave', handleDragLeave);
     uploadArea.addEventListener('drop', handleDrop);
     
-    // Add event listener for file input
-    // Use a debounce approach to prevent multiple clicks
-    let lastClickTime = 0;
-    
-    uploadArea.addEventListener('click', (e) => {
-        const currentTime = new Date().getTime();
-        
-        // Prevent rapid clicks (within 500ms)
-        if (currentTime - lastClickTime < 500) {
-            return;
-        }
-        
-        lastClickTime = currentTime;
-        fileInput.click();
-    });
+    // Remove the click event from the upload area since we're using the label
+    // The label with class 'upload-button' already has the 'for="file-input"' attribute
+    // which will trigger the file input when clicked
     
     fileInput.addEventListener('change', handleFileSelect);
 }
