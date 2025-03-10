@@ -80,22 +80,22 @@ function initCropper() {
         toggleDragModeOnDblclick: true, // Toggle drag mode between "crop" and "move" when double click on the cropper
         background: true, // Show the grid background
         backgroundColor: backgroundColor, // Set the background color
-    ready: function() {
-        console.log('Cropper is ready');
-        
-        // Add zoom controls to the cropper container
-        addZoomControls();
-        
-        // Store original image dimensions
-        const imageData = cropper.getImageData();
-        originalImageWidth = imageData.naturalWidth;
-        originalImageHeight = imageData.naturalHeight;
-        
-        // Set initial values for width and height inputs
-        const cropBoxData = cropper.getCropBoxData();
-        widthInput.value = Math.round(cropBoxData.width);
-        heightInput.value = Math.round(cropBoxData.height);
-    }
+        ready: function() {
+            console.log('Cropper is ready');
+            
+            // Add zoom controls to the cropper container
+            addZoomControls();
+            
+            // Store original image dimensions
+            const imageData = cropper.getImageData();
+            originalImageWidth = imageData.naturalWidth;
+            originalImageHeight = imageData.naturalHeight;
+            
+            // Set initial values for width and height inputs
+            const cropBoxData = cropper.getCropBoxData();
+            widthInput.value = Math.round(cropBoxData.width);
+            heightInput.value = Math.round(cropBoxData.height);
+        }
     });
     
     // Event handling is now done in the ready option above
